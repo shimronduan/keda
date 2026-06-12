@@ -1,0 +1,62 @@
+# .dockerignore for C# project and Terraform
+
+# Build output
+**/bin/
+**/obj/
+bin/
+obj/
+
+# Visual Studio, Rider, editors
+.vs/
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Dotnet publish artifacts
+publish/
+artifacts/
+
+# NuGet
+*.nupkg
+packages/
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Secrets and environment
+.env
+.env.*.local
+*.pem
+*.pfx
+*.key
+*.jks
+secrets.json
+
+# Logs and OS files
+*.log
+crash.log
+crash.*.log
+.DS_Store
+Thumbs.db
+
+# Git and Docker overrides
+.git
+docker-compose.override.yml
+docker-compose.*.local.yml
