@@ -83,3 +83,8 @@ output "kubernetes_service_account_oidc" {
   description = "Kubernetes service account OIDC identifier for Workload Identity configuration"
   value       = local.kubernetes_service_account_oidc
 }
+# Output the ACR login server URL so you easily know what to use in your Docker commands
+output "acr_login_server" {
+  description = "The URL of the Container Registry"
+  value       = azurerm_container_registry.acr.login_server
+}
