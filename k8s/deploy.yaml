@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: keda-worker-sa
+  namespace: default
+  annotations:
+    azure.workload.identity/client-id: "1298d369-90af-47f1-b015-285e3b837658"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: csharp-blob-worker
+  namespace: default
+  labels:
+    azure.workload.identity/use: "true" # Enables workload identity injection
+spec:
+  replicas: 0 # KEDA will control this, start at 0
+  selector:
+    matchLabels:
+      app: blob-worker
+  template:
+    metadata:
+      labels:
+        app: blob-worker
+        azure.workload.identity/use: "true"
+    spec:
+      serviceAccountName: keda-worker-sa
+      containers:
+      - name: worker
+        image: <YOUR_CONTAINER_IMAGE>
+        env:
+        - name: ServiceBusNamespace
+          value: "sb-event-demo-123.servicebus.windows.net"
+        - name: QueueName
+          value: "blob-uploads-queue"
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: azure-servicebus-queue-scaler
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: csharp-blob-worker
+  minReplicaCount: 0  # Scale down to zero when empty!
+  maxReplicaCount: 10
+  cooldownPeriod:  30
+  triggers:
+  - type: azure-servicebus
+    metadata:
+      queueName: "blob-uploads-queue"
+      namespace: "sb-event-demo-123"
+      messageCount: "1" # Scale up by 1 pod per message in queue
+    authenticationRef:
+      name: keda-az-identity
+---
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: keda-az-identity
+  namespace: default
+spec:
+  podIdentity:
+    provider: azure-workload

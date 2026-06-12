@@ -1,0 +1,39 @@
+# Example values - Copy this file to terraform.tfvars and customize for your environment
+
+environment = "dev"
+location    = "East US"
+
+# Storage Account Configuration
+storage_account_name              = "stblobeventdemo123"
+storage_account_tier              = "Standard"
+storage_account_replication_type  = "LRS"
+storage_container_name            = "uploads"
+
+# Service Bus Configuration
+servicebus_namespace_name = "sb-event-demo-123"
+servicebus_sku            = "Standard"
+servicebus_queue_name     = "blob-uploads-queue"
+
+# AKS Configuration
+aks_cluster_name  = "aks-event-demo"
+aks_dns_prefix    = "aks-demo"
+aks_node_pool_name = "default"
+aks_node_count    = 1
+aks_vm_size       = "Standard_D2s_v3"
+
+# Event Grid Configuration
+eventgrid_system_topic_name = "storage-system-topic"
+eventgrid_subscription_name = "blob-created-subscription"
+
+# Workload Identity Configuration
+managed_identity_name     = "id-aks-worker"
+federated_identity_name   = "aks-worker-federated"
+kubernetes_namespace      = "default"
+kubernetes_service_account = "keda-worker-sa"
+
+# Tags applied to all resources
+tags = {
+  environment = "dev"
+  project     = "event-driven-demo"
+  managed_by  = "terraform"
+}
