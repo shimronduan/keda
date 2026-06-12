@@ -27,7 +27,7 @@ spec:
       serviceAccountName: keda-worker-sa
       containers:
       - name: worker
-        image: <YOUR_CONTAINER_IMAGE>
+        image: acreventsdemo123.azurecr.io/blob-worker:v1
         env:
         - name: ServiceBusNamespace
           value: "sb-event-demo-123.servicebus.windows.net"

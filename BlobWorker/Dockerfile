@@ -1,5 +1,5 @@
 # Stage 1: Build and Publish
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 # Copy the csproj and restore dependencies
