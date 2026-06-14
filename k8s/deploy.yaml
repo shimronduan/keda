@@ -4,7 +4,7 @@ metadata:
   name: keda-worker-sa
   namespace: default
   annotations:
-    azure.workload.identity/client-id: "1298d369-90af-47f1-b015-285e3b837658"
+    azure.workload.identity/client-id: "b59fe38b-9f13-4175-ac17-290df02f3d31"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -64,3 +64,4 @@ metadata:
 spec:
   podIdentity:
     provider: azure-workload
+    identityId: "b59fe38b-9f13-4175-ac17-290df02f3d31"

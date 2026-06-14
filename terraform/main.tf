@@ -90,8 +90,8 @@ resource "azurerm_eventgrid_system_topic" "system_topic" {
 
 resource "azurerm_eventgrid_system_topic_event_subscription" "event_sub" {
   name                = var.eventgrid_subscription_name
-  system_topic        = azurerm_eventgrid_system_topic.system_topic.name
   resource_group_name = azurerm_resource_group.rg.name
+  system_topic        = azurerm_eventgrid_system_topic.system_topic.name
 
   service_bus_queue_endpoint_id = azurerm_servicebus_queue.queue.id
   included_event_types          = var.eventgrid_included_event_types
@@ -154,3 +154,35 @@ resource "azurerm_role_assignment" "aks_acr_pull" {
   principal_id         = azurerm_kubernetes_cluster.aks.kubelet_identity[0].object_id
 }
 
+# 1. Add a second federated credential so KEDA Operator can use the identity
+resource "azurerm_federated_identity_credential" "keda_operator_federated" {
+  name                = "keda-operator-federated"
+  resource_group_name = azurerm_resource_group.rg.name
+  audience            = ["api://AzureADTokenExchange"]
+  issuer              = azurerm_kubernetes_cluster.aks.oidc_issuer_url
+  parent_id           = azurerm_user_assigned_identity.worker_identity.id
+  subject             = "system:serviceaccount:keda:keda-operator" # Points to KEDA operator in the keda namespace
+}
+
+# Deploy KEDA through Helm
+resource "helm_release" "keda" {
+  name             = "keda"
+  repository       = "https://kedacore.github.io/charts"
+  chart            = "keda"
+  namespace        = "keda"
+  create_namespace = true
+  version          = "2.13.0"
+
+  values = [
+    yamlencode({
+      podIdentity = {
+        azureWorkload = {
+          enabled = true
+          clientId = azurerm_user_assigned_identity.worker_identity.client_id
+        }
+      }
+    })
+  ]
+  
+  depends_on = [azurerm_kubernetes_cluster.aks]
+}
