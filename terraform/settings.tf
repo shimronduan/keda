@@ -13,6 +13,13 @@ terraform {
       version = "~> 2.0"
     }
   }
+
+  backend "azurerm" {
+    resource_group_name  = "tfstate-rg"
+    storage_account_name = "tfstatesa17329"
+    container_name       = "tfstate"
+    key                  = "keda.tfstate"
+  }
 }
 
 provider "azurerm" {
