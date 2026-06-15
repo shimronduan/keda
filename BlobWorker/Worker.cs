@@ -54,6 +54,10 @@ namespace BlobWorker
                 var content = await blobClient.DownloadContentAsync();
                 
                 _logger.LogInformation($"Blob Content read successfully: {content.Value.Content}");
+
+                // Delete the blob after reading
+                await blobClient.DeleteAsync();
+                _logger.LogInformation($"Blob deleted successfully: {blobUrl}");
             }
 
             await args.CompleteMessageAsync(args.Message);
