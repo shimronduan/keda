@@ -84,8 +84,8 @@ Add these secrets:
 
 | Secret Name | Value |
 |-------------|-------|
-| `AZURE_CLIENT_ID` | App Registration Application (client) ID |
-| `AZURE_TENANT_ID` | Azure AD Tenant ID |
+| `AZURE_CLIENT_ID` | `58110a0b-0c44-496a-a453-f6db65da7bfe` |
+| `AZURE_TENANT_ID` | `7d02c6e8-14e3-4d7b-90ab-5d616f525dd0` |
 | `AZURE_SUBSCRIPTION_ID` | `60296e74-7b11-471e-9baf-c9c450c2417b` |
 
 To get these values:
