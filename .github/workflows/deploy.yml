@@ -14,9 +14,9 @@ on:
 
 env:
   TERRAFORM_WORKING_DIR: './terraform'
-  ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-  ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-  ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+  ARM_CLIENT_ID: 58110a0b-0c44-496a-a453-f6db65da7bfe
+  ARM_SUBSCRIPTION_ID: 60296e74-7b11-471e-9baf-c9c450c2417b
+  ARM_TENANT_ID: 7d02c6e8-14e3-4d7b-90ab-5d616f525dd0
   ARM_USE_OIDC: true
 
 permissions:
@@ -40,9 +40,9 @@ jobs:
       - name: Azure Login via OIDC
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          client-id: 58110a0b-0c44-496a-a453-f6db65da7bfe
+          tenant-id: 7d02c6e8-14e3-4d7b-90ab-5d616f525dd0
+          subscription-id: 60296e74-7b11-471e-9baf-c9c450c2417b
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -88,9 +88,9 @@ jobs:
       - name: Azure Login via OIDC
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          client-id: 58110a0b-0c44-496a-a453-f6db65da7bfe
+          tenant-id: 7d02c6e8-14e3-4d7b-90ab-5d616f525dd0
+          subscription-id: 60296e74-7b11-471e-9baf-c9c450c2417b
 
       - name: Login to ACR
         run: az acr login --name ${{ needs.terraform.outputs.acr_login_server }}
@@ -115,9 +115,9 @@ jobs:
       - name: Azure Login via OIDC
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          client-id: 58110a0b-0c44-496a-a453-f6db65da7bfe
+          tenant-id: 7d02c6e8-14e3-4d7b-90ab-5d616f525dd0
+          subscription-id: 60296e74-7b11-471e-9baf-c9c450c2417b
 
       - name: Get AKS Credentials
         run: |
