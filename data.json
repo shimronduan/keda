@@ -1,0 +1,118 @@
+{
+  "id": "prod_00012345",
+  "sku": "TSH-SS-001-M-BLK",
+  "name": "Everyday Cotton Tee",
+  "brand": "StudioWear",
+  "category": ["Clothing", "Tops", "T-Shirts"],
+  "description": "Classic crew-neck short-sleeve t-shirt made from breathable organic cotton. Comfortable, durable, and perfect for daily wear.",
+  "shortDescription": "Organic cotton crew-neck tee — soft, durable, everyday essential.",
+  "price": {
+    "currency": "USD",
+    "amount": 29.99
+  },
+  "salePrice": {
+    "currency": "USD",
+    "amount": 19.99,
+    "validFrom": "2026-06-01T00:00:00Z",
+    "validUntil": "2026-06-30T23:59:59Z"
+  },
+  "availability": "in_stock",
+  "stock": 250,
+  "variants": [
+    {
+      "variantId": "prod_00012345-black-s",
+      "sku": "TSH-SS-001-S-BLK",
+      "color": "Black",
+      "colorHex": "#000000",
+      "size": "S",
+      "stock": 40,
+      "images": [
+        "https://cdn.example.com/products/prod_00012345/black-front.jpg",
+        "https://cdn.example.com/products/prod_00012345/black-back.jpg"
+      ]
+    },
+    {
+      "variantId": "prod_00012345-black-m",
+      "sku": "TSH-SS-001-M-BLK",
+      "color": "Black",
+      "colorHex": "#000000",
+      "size": "M",
+      "stock": 60,
+      "images": [
+        "https://cdn.example.com/products/prod_00012345/black-front.jpg",
+        "https://cdn.example.com/products/prod_00012345/black-back.jpg"
+      ]
+    },
+    {
+      "variantId": "prod_00012345-white-m",
+      "sku": "TSH-SS-001-M-WHT",
+      "color": "White",
+      "colorHex": "#FFFFFF",
+      "size": "M",
+      "stock": 50,
+      "images": [
+        "https://cdn.example.com/products/prod_00012345/white-front.jpg",
+        "https://cdn.example.com/products/prod_00012345/white-back.jpg"
+      ]
+    }
+  ],
+  "images": [
+    "https://cdn.example.com/products/prod_00012345/hero.jpg",
+    "https://cdn.example.com/products/prod_00012345/detail-1.jpg",
+    "https://cdn.example.com/products/prod_00012345/detail-2.jpg"
+  ],
+  "material": "100% Organic Cotton",
+  "careInstructions": "Machine wash cold with like colors. Tumble dry low. Do not bleach. Iron low if needed.",
+  "fit": "regular",
+  "gender": "unisex",
+  "weight": {
+    "value": 0.18,
+    "unit": "kg"
+  },
+  "dimensions": {
+    "length": 30,
+    "width": 22,
+    "height": 1,
+    "unit": "cm"
+  },
+  "tags": ["organic", "cotton", "basics", "sustainable"],
+  "rating": {
+    "average": 4.6,
+    "count": 142
+  },
+  "reviews": [
+    {
+      "reviewId": "r_001",
+      "author": "Ava",
+      "rating": 5,
+      "title": "Great fit and fabric",
+      "body": "Soft, breathable, and fits true to size. Will buy again.",
+      "createdAt": "2026-05-20T14:12:00Z"
+    }
+  ],
+  "shipping": {
+    "weightKg": 0.2,
+    "shipsFrom": "US",
+    "freeShippingThreshold": {
+      "currency": "USD",
+      "amount": 50.0
+    },
+    "dimensionsCm": {
+      "length": 32,
+      "width": 24,
+      "height": 3
+    }
+  },
+  "taxClass": "standard",
+  "meta": {
+    "createdAt": "2026-05-01T08:00:00Z",
+    "updatedAt": "2026-06-10T12:30:00Z",
+    "slug": "everyday-cotton-tee",
+    "seoTitle": "Everyday Organic Cotton Tee — StudioWear",
+    "seoDescription": "Shop the Everyday Organic Cotton Tee from StudioWear. Soft, durable, and sustainably made."
+  },
+  "customAttributes": {
+    "sustainabilityCert": "GOTS",
+    "origin": "Made in Portugal"
+  }
+}
