@@ -4,7 +4,7 @@ metadata:
   name: keda-worker-sa
   namespace: default
   annotations:
-    azure.workload.identity/client-id: "b59fe38b-9f13-4175-ac17-290df02f3d31"
+    azure.workload.identity/client-id: "${MANAGED_IDENTITY_CLIENT_ID}"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -27,7 +27,7 @@ spec:
       serviceAccountName: keda-worker-sa
       containers:
       - name: worker
-        image: acreventsdemo123.azurecr.io/blob-worker:v1
+        image: ${ACR_LOGIN_SERVER}/blob-worker:${IMAGE_TAG}
         env:
         - name: ServiceBusNamespace
           value: "sb-event-demo-123.servicebus.windows.net"
@@ -64,4 +64,4 @@ metadata:
 spec:
   podIdentity:
     provider: azure-workload
-    identityId: "b59fe38b-9f13-4175-ac17-290df02f3d31"
+    identityId: "${MANAGED_IDENTITY_CLIENT_ID}"
